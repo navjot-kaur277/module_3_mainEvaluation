@@ -1,23 +1,17 @@
+import React, { useEffect, useState } from "react";
+import Navbar from "../components/Navbar";
 
 
+const CustomerDashboard = () => {
+    const [restaurants , setRestaurants] = useState([]);
+     const [filters, setFilters]= useState ({search: "", type: "", parking: ""});
 
+     useEffect = (() => {
+        const data = JSON.parse(localStorage.getItem("evalData")) || [];
+        setRestaurants(data);
+     }, [] );
 
-
-
-
-  const [filters, setFilters]= useState ({search: "", type: "", parking: ""});
-
-
-
-
-
-
-
-
-
-
-
-const filteredRestaurants = restaurants.filter((r) => {
+     const filteredRestaurants = restaurants.filter((r) => {
   const matchesSearch = r.name
     .toLowerCase()
     .includes(filters.search.toLowerCase());
@@ -30,6 +24,26 @@ const filteredRestaurants = restaurants.filter((r) => {
 
   return matchParking && matchesType && matchesSearch;
 });  
+
+
+     
+
+}
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
 
 
 
